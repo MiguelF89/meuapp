@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 
-// Redireciona a home '/' para '/products'
-Route::get('/', function () {
-    return redirect('/products');
-});
+Route::view('/', 'welcome');
 
-// Rota para listar os produtos
-Route::get('/products', [ProductController::class, 'index']);
+Route::view('dashboard', 'dashboard')
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
+
+require __DIR__.'/auth.php';
