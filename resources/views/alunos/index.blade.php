@@ -44,6 +44,17 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{ $alunos->matricula }}
                                     </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <a href="{{ route('alunos.edit', $alunos->id) }}"
+                                            class="text-indigo-600 houver:text-indigo-900 mr-3">Editar</a>
+                                        <form action="{{ route('alunos.destroy', $alunos->id) }}"
+                                            method="POST" class="inline-block">
+                                            @csrf 
+                                            @method('DELETE')
+                                            <button type="submit" class="Text-red-600 houver:text-red-900">Excluir</button>
+                                        </form>
+                                    </td>
                                 </tr>
 
                                 @endforeach
